@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up | Quick Travel</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">Quick Travel</div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="beaches.html">BEACHES</a></li>
+            <li><a href="trips.html">TRIPS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="login.html" class="nav__btn">Get in touch</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">Sign<br><span>Up</span></h1>
+        
+        <div class="form-card">
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" placeholder="Minimum 8 characters" required>
+                </div>
+                <button type="submit" class="btn-submit">Join Quick Travel</button>
+            </form>
+            <div class="contact-info" style="margin-top: 2rem;">
+                <p>Already joined? <a href="login.html" style="color: var(--primary);">Log in here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

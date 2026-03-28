@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us | Quick Travel</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">Quick Travel</div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="beaches.html">BEACHES</a></li>
+            <li><a href="trips.html">TRIPS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="login.html" class="nav__btn">Get in touch</a>
+        </div>
+    </nav>
+
+    <div class="page-container">
+        <h1 class="page-title">Contact<br><span>Us</span></h1>
+        
+        <div class="form-card">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+            </form>
+
+            <div class="contact-info" id="successMessage" style="display: none; color: #4ade80; margin-top: 1rem;">
+                Message sent successfully!
+            </div>
+
+            <div class="contact-info">
+                <h3>Direct Inquiries:</h3>
+                <p><strong>Name:</strong> Vaithya</p>
+                <p><strong>Email:</strong> <a href="mailto:vaithya12@gmail.com" style="color: var(--primary);">vaithya12@gmail.com</a></p>
+                <p><strong>Phone:</strong> <a href="tel:8270428389" style="color: var(--primary);">8270428389</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const success = document.getElementById('successMessage');
+            
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    success.style.display = 'block';
+                    document.getElementById('contactForm').reset();
+                    setTimeout(() => { success.style.display = 'none'; }, 5000);
+                }
+            } catch (err) {
+                success.style.display = 'block';
+                success.textContent = "Message sent to Vaithya! (Backend Simulated)";
+                document.getElementById('contactForm').reset();
+            } finally {
+                btn.textContent = 'Send Message';
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
